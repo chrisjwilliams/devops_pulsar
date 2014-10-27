@@ -1,11 +1,11 @@
 devops_pulsar
 =============
 This repository contains the configuration files describing the software components used 
-inthe ska time domain team development enviroment.
+in the ska time domain team development environment
 
 Installation
 ============
-1. Install devops.
+1. Install devops
 2. Clone this repository to a suitable location
 3. Configure devops to read these files
 
