@@ -1,0 +1,36 @@
+<DevOps version="0.0.0" type="project">
+ <project version="dev" name="pelican"/>
+ <sources>
+  <source url="https://github.com/pelican/pelican-lofar.git" type="git"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <task name="setup">
+    <environment arch="darwin">
+    FLAGS="-Wno-dev -DGTEST_USE_OWN_TR1_TUPLE=1"
+    </environment>
+    <environment type="debug">
+    FLAGS="-DCMAKE_BUILD_TYPE=debug"
+    </environment>
+    <code type="bash">
+    cmake ${FLAGS} -DPELICAN_INCLUDE_DIR=${pelican::install_dir}/include -DPELICAN_INSTALL_DIR=${pelican::install_dir} -DLOFAR_DAL_INSTALL_DIR=${lofar_dal::install_dir} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}/src"
+    </code>
+   </task>
+   <task name="build">
+    <code type="bash">
+    make
+    </code>
+   </task>
+   <task name="install">
+    <code type="bash">
+    make install
+    </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies>
+  <dependency version="1.56" name="boost"/>
+  <dependency version="dev" name="lofar_dal"/>
+  <dependency version="dev" name="pelican"/>
+ </dependencies>
+</DevOps>
