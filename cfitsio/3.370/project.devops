@@ -1,0 +1,30 @@
+<DevOps version="0.0.0" type="project">
+ <project version="3.370" name="cfitsio"/>
+ <sources>
+  <source url="ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3370.tar.gz" type="tar"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <task name="setup">
+     <environment arch="darwin">
+     CFLAGS="-arch x86_64 -O2"
+     </environment>
+     <code type="bash">
+        cd ${src_dir}/cfitsio && CFLAGS="${CFLAGS}" ./configure --prefix=${install_dir}
+     </code>
+   </task>
+   <task name="build">
+     <code type="bash">
+        cd ${src_dir}/cfitsio && make
+     </code>
+   </task>
+   <task name="install">
+     <code type="bash">
+        cd ${src_dir}/cfitsio && make install
+     </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies/>
+ <EnvironmentManager/>
+</DevOps>
