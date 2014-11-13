@@ -1,0 +1,36 @@
+<DevOps version="0.0.0" type="project">
+ <project version="1.14.1" name="automake"/>
+ <sources>
+  <source url="http://ftpmirror.gnu.org/automake/automake-1.14.1.tar.gz" type="tar"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <environment>
+   automake_dir=${src_dir}/automake-${version}
+   </environment>
+   <task name="setup">
+    <code type="bash">
+    cd ${automake_dir} && ./configure --prefix=${install_dir}
+    </code>
+   </task>
+   <task name="build">
+    <code type="bash">
+    cd ${automake_dir} && make
+    </code>
+   </task>
+   <task name="install">
+    <code type="bash">
+    cd ${automake_dir} && make install
+    </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies>
+  <dependency version="2.68" name="autoconf"/>
+ </dependencies>
+ <EnvironmentManager>
+  <environment name="runtime">
+  PATH=${install_dir}/bin:${PATH}
+  </environment>
+ </EnvironmentManager>
+</DevOps>

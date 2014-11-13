@@ -1,0 +1,34 @@
+<DevOps version="0.0.0" type="project">
+ <project version="2.68" name="autoconf"/>
+ <sources>
+  <source url="http://ftpmirror.gnu.org/autoconf/autoconf-2.68.tar.gz" type="tar"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <environment>
+   autoconf_dir=${src_dir}/autoconf-${version}
+   </environment>
+   <task name="setup">
+    <code type="bash">
+    cd ${autoconf_dir} && ./configure --prefix=${install_dir}
+    </code>
+   </task>
+   <task name="build">
+    <code type="bash">
+    cd ${autoconf_dir} && make
+    </code>
+   </task>
+   <task name="install">
+    <code type="bash">
+    cd ${autoconf_dir} && make install
+    </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies/>
+ <EnvironmentManager>
+    <environment name="runtime">
+        PATH=${install_dir}/bin:${PATH}
+    </environment>
+ </EnvironmentManager>
+</DevOps>
