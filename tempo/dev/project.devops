@@ -7,13 +7,13 @@
   <workflow name="build">
    <task name="setup">
     <environment dependency="cfitsio">
-    CONFIG_FLAGS=--with-cfitsio-dir="${cfitsio::install_dir}"
+    CFITSIO_CONFIG_FLAGS=--with-cfitsio-dir="${cfitsio::install_dir}"
     </environment>
     <environment dependency="fftw3">
-    CONFIG_FLAGS=--with-fftw3-dir="${fftw3::install_dir}"
+    FFTW3_CONFIG_FLAGS=--with-fftw3-dir="${fftw3::install_dir}"
     </environment>
     <code type="bash">
-    cd ${src_dir} && ./prepare && ./configure F77=gfortran --prefix=${install_dir} ${CONFIG_FLAGS} LIBS=-lgslcblas
+    cd ${src_dir} && ./prepare && ./configure F77=gfortran --prefix=${install_dir} LIBS=-lgslcblas
     </code>
    </task>
    <task name="build">
