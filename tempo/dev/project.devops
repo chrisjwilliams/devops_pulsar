@@ -1,0 +1,38 @@
+<DevOps version="0.0.0" type="project">
+ <project version="dev" name="tempo"/>
+ <sources>
+  <source url="git://git.code.sf.net/p/tempo/tempo" type="git"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <task name="setup">
+    <environment dependency="cfitsio">
+    CONFIG_FLAGS=--with-cfitsio-dir="${cfitsio::install_dir}"
+    </environment>
+    <environment dependency="fftw3">
+    CONFIG_FLAGS=--with-fftw3-dir="${fftw3::install_dir}"
+    </environment>
+    <code type="bash">
+    cd ${src_dir} && ./prepare && ./configure F77=gfortran --prefix=${install_dir} ${CONFIG_FLAGS} LIBS=-lgslcblas
+    </code>
+   </task>
+   <task name="build">
+    <code type="bash">
+    cd ${src_dir} && make
+    </code>
+   </task>
+   <task name="install">
+    <code type="bash">
+    cd ${src_dir} && make install
+    </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies>
+  <dependency version="1.14.1" name="automake"/>
+  <dependency version="2.68" name="autoconf"/>
+  <dependency version="dev" name="fftw3"/>
+  <dependency version="3.370" name="cfitsio"/>
+ </dependencies>
+ <EnvironmentManager/>
+</DevOps>
