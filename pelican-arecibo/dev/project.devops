@@ -1,13 +1,14 @@
 <DevOps version="0.0.0" type="project">
  <project version="dev" name="pelican-arecibo"/>
  <sources>
-  <source url="https://github.com/jayanthc/pelican-lofar.git" type="git"/>
+  <source type="git" url="https://github.com/jayanthc/pelican-lofar.git"/>
  </sources>
  <workflows>
   <workflow name="build">
    <task name="setup">
     <environment arch="darwin">
     FLAGS="-Wno-dev -DGTEST_USE_OWN_TR1_TUPLE=1"
+    CXX=clang++
     </environment>
     <environment type="debug">
     FLAGS="-DCMAKE_BUILD_TYPE=debug"
@@ -29,8 +30,9 @@
   </workflow>
  </workflows>
  <dependencies>
-  <dependency version="1.56" name="boost"/>
-  <dependency version="dev" name="lofar_dal"/>
   <dependency version="dev" name="pelican"/>
+  <dependency name="lofar_dal" version="dev"/>
+  <dependency version="1.56" name="boost"/>
  </dependencies>
+ <EnvironmentManager/>
 </DevOps>
