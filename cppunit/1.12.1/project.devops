@@ -1,0 +1,27 @@
+<DevOps type="project" version="0.0.0">
+ <project version="1.12.1" name="cppunit"/>
+ <sources>
+  <source type="tar" url="http://downloads.sourceforge.net/project/cppunit/cppunit/1.12.1/cppunit-1.12.1.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fcppunit%2Ffiles%2Fcppunit%2F1.12.1%2F&use_mirror=switch"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <task name="setup">
+    <code type="bash">
+    cd ${src_dir}/cppunit-1.12.1 && ./configure --prefix=${install_dir} || exit 0;
+    </code>
+   </task>
+   <task name="build">
+    <code type="bash">
+    cd ${src_dir}/cppunit-1.12.1 && make
+    </code>
+   </task>
+   <task name="install">
+    <code type="bash">
+    cd ${src_dir}/cppunit-1.12.1 && make install
+    </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies/>
+ <EnvironmentManager/>
+</DevOps>
