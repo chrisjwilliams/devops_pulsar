@@ -1,7 +1,7 @@
 <DevOps version="0.0.0" type="project">
  <project version="1.56" name="boost"/>
  <sources>
-  <source url="https://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.bz2" type="tar"/>
+  <source url="http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.bz2?use_mirror=autoselect" type="tar"/>
  </sources>
  <workflows>
   <workflow name="build">
