@@ -1,7 +1,7 @@
-<DevOps version="0.0.0" type="project">
+<DevOps type="project" version="0.0.0">
  <project version="dev" name="pelican"/>
  <sources>
-  <source url="https://github.com/pelican/pelican-lofar.git" type="git"/>
+  <source type="git" url="https://github.com/pelican/pelican-lofar.git"/>
  </sources>
  <workflows>
   <workflow name="build">
@@ -12,8 +12,11 @@
     <environment type="debug">
     FLAGS="-DCMAKE_BUILD_TYPE=debug"
     </environment>
+    <environment dependency="cppunit">
+    CPPUNIT_FLAGS="-DCPPUNIT_INCLUDE_DIR=${cppunit::install_dir}/include"
+    </environment>
     <code type="bash">
-    cmake ${FLAGS} -DPELICAN_INCLUDE_DIR=${pelican::install_dir}/include -DPELICAN_INSTALL_DIR=${pelican::install_dir} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}/src"
+    cmake ${FLAGS} -DPELICAN_INCLUDE_DIR=${pelican::install_dir}/include -DPELICAN_INSTALL_DIR=${pelican::install_dir} ${CPPUNIT_FLAGS} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}/src"
     </code>
    </task>
    <task name="build">
@@ -29,7 +32,11 @@
   </workflow>
  </workflows>
  <dependencies>
+  <dependency name="pelican" version="dev"/>
+  <dependency version="1.12.1" name="cppunit"/>
   <dependency version="1.56" name="boost"/>
-  <dependency version="dev" name="pelican"/>
  </dependencies>
+ <EnvironmentManager>
+  <environment name="export"/>
+ </EnvironmentManager>
 </DevOps>
