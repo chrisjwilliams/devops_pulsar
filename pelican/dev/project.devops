@@ -12,8 +12,14 @@
     <environment type="debug">
     FLAGS="-DCMAKE_BUILD_TYPE=debug"
     </environment>
+    <environment dependency="boost">
+    BOOST_FLAGS=-DBOOST_INSTALL_DIR=${boost::install_dir}
+    </environment>
+    <environment dependency="cppunit">
+    CPPUNIT_FLAGS=-DCPPUNIT_ROOT=${cppunit::install_dir} -DCPPUNIT_INCLUDE_DIR=${cppunit::install_dir}/include
+    </environment>
     <code type="bash">
-    cmake ${FLAGS} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}/pelican"
+    cmake ${FLAGS} ${BOOST_FLAGS} ${CPPUNIT_FLAGS} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}/pelican"
     </code>
    </task>
    <task name="build">
@@ -30,5 +36,6 @@
  </workflows>
  <dependencies>
   <dependency version="1.56" name="boost"/>
+  <dependency version="1.12.1" name="cppunit"/>
  </dependencies>
 </DevOps>
