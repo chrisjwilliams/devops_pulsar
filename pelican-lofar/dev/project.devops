@@ -34,7 +34,7 @@
  <dependencies>
   <dependency name="pelican" version="dev"/>
   <dependency version="1.12.1" name="cppunit"/>
-  <dependency version="1.56" name="boost"/>
+  <dependency version="1.57" name="boost"/>
  </dependencies>
  <EnvironmentManager>
   <environment name="export"/>
