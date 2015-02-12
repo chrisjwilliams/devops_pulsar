@@ -13,7 +13,7 @@
     FLAGS="-DCMAKE_BUILD_TYPE=debug"
     </environment>
     <environment dependency="boost">
-    BOOST_FLAGS=-DBOOST_INSTALL_DIR=${boost::install_dir}
+    BOOST_FLAGS="-DBOOST_INCLUDEDIR=${boost::install_dir}/include -DBOOST_LIBRARYDIR=${boost::install_dir}/lib -DBoost_NO_BOOST_CMAKE=true"
     </environment>
     <environment dependency="cppunit">
     CPPUNIT_FLAGS=-DCPPUNIT_ROOT=${cppunit::install_dir} -DCPPUNIT_INCLUDE_DIR=${cppunit::install_dir}/include
@@ -35,7 +35,7 @@
   </workflow>
  </workflows>
  <dependencies>
-  <dependency version="1.56" name="boost"/>
+  <dependency version="1.57" name="boost"/>
   <dependency version="1.12.1" name="cppunit"/>
  </dependencies>
 </DevOps>
