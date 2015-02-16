@@ -1,5 +1,5 @@
 <DevOps type="project" version="0.0.0">
- <project version="dev" name="pelican"/>
+ <project version="dev" name="pelican-lofar"/>
  <sources>
   <source type="git" url="https://github.com/pelican/pelican-lofar.git"/>
  </sources>
@@ -12,11 +12,14 @@
     <environment type="debug">
     FLAGS="-DCMAKE_BUILD_TYPE=debug"
     </environment>
+    <environment dependency="boost">
+    BOOST_FLAGS="-DBOOST_INCLUDEDIR=${boost::install_dir}/include -DBOOST_LIBRARYDIR=${boost::install_dir}/lib -DBoost_NO_BOOST_CMAKE=true"
+    </environment>
     <environment dependency="cppunit">
     CPPUNIT_FLAGS="-DCPPUNIT_INCLUDE_DIR=${cppunit::install_dir}/include"
     </environment>
     <code type="bash">
-    cmake ${FLAGS} -DPELICAN_INCLUDE_DIR=${pelican::install_dir}/include -DPELICAN_INSTALL_DIR=${pelican::install_dir} ${CPPUNIT_FLAGS} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}/src"
+    cmake ${FLAGS} -DPELICAN_INCLUDE_DIR=${pelican::install_dir}/include -DPELICAN_INSTALL_DIR=${pelican::install_dir} ${BOOST_FLAGS} ${CPPUNIT_FLAGS} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}/src"
     </code>
    </task>
    <task name="build">
