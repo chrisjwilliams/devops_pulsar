@@ -19,7 +19,7 @@
     CPPUNIT_FLAGS=-DCPPUNIT_ROOT=${cppunit::install_dir} -DCPPUNIT_INCLUDE_DIR=${cppunit::install_dir}/include
     </environment>
     <code type="bash">
-    cmake ${FLAGS} ${BOOST_FLAGS} ${CPPUNIT_FLAGS} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}/pelican"
+    cmake ${FLAGS} ${BOOST_FLAGS-} ${CPPUNIT_FLAGS-} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}/pelican"
     </code>
    </task>
    <task name="build">
