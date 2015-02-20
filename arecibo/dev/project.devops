@@ -1,0 +1,32 @@
+<DevOps version="0.0.0" type="project">
+ <project version="dev" name="arecibo"/>
+ <sources>
+  <source url="https://repo.oerc.ox.ac.uk/christopher.williams/arecibo.git" type="git"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <task name="setup">
+    <environment type="debug">
+    FLAGS="-DCMAKE_BUILD_TYPE=debug"
+    </environment>
+    <code type="bash">
+    cmake ${FLAGS} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}"
+    </code>
+   </task>
+   <task name="build">
+    <code type="bash">
+    make
+    </code>
+   </task>
+   <task name="install">
+    <code type="bash">
+    make install
+    </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies>
+  <dependency version="1.56" name="boost"/>
+  <dependency version="dev" name="panda"/>
+ </dependencies>
+</DevOps>

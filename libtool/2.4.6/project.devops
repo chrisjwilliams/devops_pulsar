@@ -1,0 +1,37 @@
+<DevOps version="0.0.0" type="project">
+ <project version="2.4.6" name="libtool"/>
+ <sources>
+  <source url="http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz" type="tar"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <environment>
+   libtool_dir=${src_dir}/libtool-${version}
+   </environment>
+   <task name="setup">
+    <code type="bash">
+    ${libtool_dir}/configure --prefix=${install_dir}
+    </code>
+   </task>
+   <task name="build">
+    <code type="bash">
+    make
+    </code>
+   </task>
+   <task name="install">
+    <code type="bash">
+    make install
+    </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies>
+  <dependency version="2.68" name="libtool"/>
+  <dependency version="1.14.1" name="automake"/>
+ </dependencies/>
+ <EnvironmentManager>
+    <environment name="runtime">
+        PATH=${install_dir}/bin:${PATH}
+    </environment>
+ </EnvironmentManager>
+</DevOps>

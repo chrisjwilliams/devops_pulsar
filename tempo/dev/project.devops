@@ -13,17 +13,17 @@
     FFTW3_CONFIG_FLAGS=--with-fftw3-dir="${fftw3::install_dir}"
     </environment>
     <code type="bash">
-    cd ${src_dir} && ./prepare && ./configure F77=gfortran --prefix=${install_dir} LIBS=-lgslcblas
+    ${src_dir}/prepare && ${src_dir}/configure F77=gfortran ${FFTW3_CONFIG_FLAGS-} ${CFITSIO_CONFIG_FLAGS-} --prefix=${install_dir} LIBS=-lgslcblas
     </code>
    </task>
    <task name="build">
     <code type="bash">
-    cd ${src_dir} && make
+    make
     </code>
    </task>
    <task name="install">
     <code type="bash">
-    cd ${src_dir} && make install
+    make install
     </code>
    </task>
   </workflow>
