@@ -28,10 +28,11 @@
  <dependencies>
   <dependency version="2.68" name="libtool"/>
   <dependency version="1.14.1" name="automake"/>
- </dependencies/>
+ </dependencies>
  <EnvironmentManager>
     <environment name="runtime">
         PATH=${install_dir}/bin:${PATH}
+        ACLOCAL_PATH=${install_dir}/share/aclocal
     </environment>
  </EnvironmentManager>
 </DevOps>

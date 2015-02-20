@@ -1,0 +1,47 @@
+<DevOps version="0.0.0" type="project">
+ <project version="dev" name="sigproc_mk"/>
+ <sources>
+  <source url="https://github.com/SixByNine/sigproc.git" type="git"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <task name="setup">
+    <environment dependency="cfitsio">
+    CFITSIO_CONFIG_FLAGS=--with-cfitsio-dir="${cfitsio::install_dir}"
+    </environment>
+    <environment dependency="fftw3">
+    FFTW3_CONFIG_FLAGS=--with-fftw3-dir="${fftw3::install_dir}"
+    </environment>
+    <environment type="release">
+    FLAGS="-DNDEBUG"
+    </environment>
+    <environment type="debug">
+    FLAGS=""
+    </environment>
+    <code type="bash">
+    cd ${src_dir} && ./bootstrap && ./configure ${FLAGS-} ${FFTW3_CONFIG_FLAGS-} ${CFITSIO_CONFIG_FLAGS-} --prefix="${install_dir}"
+    </code>
+   </task>
+   <task name="build">
+    <code type="bash">
+    cd ${src_dir} && make
+    </code>
+   </task>
+   <task name="install">
+    <code type="bash">
+    cd ${src_dir} && make install
+    </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies>
+  <dependency version="1.14.1" name="automake"/>
+  <dependency version="2.68" name="autoconf"/>
+  <dependency version="2.4.6" name="libtool"/>
+  <dependency version="3.370" name="cfitsio"/>
+  <dependency version="3.3.4" name="fftw"/>
+ </dependencies>
+ <EnvironmentManager>
+  <environment name="export"/>
+ </EnvironmentManager>
+</DevOps>
