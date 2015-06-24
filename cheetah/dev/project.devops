@@ -16,7 +16,7 @@
     BOOST_FLAGS=-DBOOST_ROOT=${boost::install_dir}
     </environment>
     <environment dependency="panda">
-    PANDA_FLAGS=-DPANDA_ROOT=${panda::install_dir}
+    PANDA_FLAGS=-DPANDA_INSTALL_DIR=${panda::install_dir}
     </environment>
     <environment type="debug">
     FLAGS="-DCMAKE_BUILD_TYPE=debug"
