@@ -1,7 +1,7 @@
 <DevOps version="0.0.0" type="project">
  <project version="dev" name="panda"/>
  <sources>
-  <source url="https://repo.oerc.ox.ac.uk/christopher.williams/panda.git" type="git"/>
+  <source url="git@gitlab.com:SKA-TDT/panda.git" type="git"/>
  </sources>
  <workflows>
   <workflow name="build">
