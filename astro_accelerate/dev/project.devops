@@ -1,7 +1,7 @@
-<DevOps version="0.0.0" type="project">
+<DevOps type="project" version="0.0.0">
  <project version="dev" name="astro_accelerate"/>
  <sources>
-  <source url="https://github.com/wesarmour/astro-accelerate.git" type="git"/>
+  <source type="git" url="https://github.com/wesarmour/astro-accelerate.git"/>
  </sources>
  <workflows>
   <workflow name="build">
@@ -32,7 +32,7 @@
   </workflow>
  </workflows>
  <dependencies>
-  <dependency version="1.57" name="boost"/>
+  <dependency name="boost" version="1.57"/>
  </dependencies>
  <EnvironmentManager>
   <environment name="export"/>
