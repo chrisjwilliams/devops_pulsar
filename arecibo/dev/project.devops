@@ -6,16 +6,22 @@
  <workflows>
   <workflow name="build">
    <task name="setup">
+    <environment dependency="boost">
+    BOOST_FLAGS=-DBOOST_ROOT=${boost::install_dir}
+    </environment>
+    <environment dependency="panda">
+    PANDA_FLAGS="-DPANDA_INSTALL_DIR=${panda::install_dir}"
+    </environment>
     <environment type="debug">
     FLAGS="-DCMAKE_BUILD_TYPE=debug"
     </environment>
     <code type="bash">
-    cmake ${FLAGS} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}"
+    cmake ${FLAGS} ${BOOST_FLAGS} ${PANDA_FLAGS} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}"
     </code>
    </task>
    <task name="build">
     <code type="bash">
-    make
+    make -j
     </code>
    </task>
    <task name="install">
@@ -26,7 +32,7 @@
   </workflow>
  </workflows>
  <dependencies>
-  <dependency version="1.56" name="boost"/>
+  <dependency version="1.63" name="boost"/>
   <dependency version="dev" name="panda"/>
  </dependencies>
 </DevOps>
