@@ -38,7 +38,7 @@
   </workflow>
  </workflows>
  <dependencies>
-  <dependency version="1.57" name="boost"/>
+  <dependency version="1.63" name="boost"/>
   <dependency version="dev" name="panda"/>
  </dependencies>
  <EnvironmentManager>
