@@ -32,7 +32,7 @@
   </workflow>
  </workflows>
  <dependencies>
-  <dependency version="1.63" name="boost"/>
+  <dependency version="1.65" name="boost"/>
  </dependencies>
  <EnvironmentManager>
   <environment name="export"/>
