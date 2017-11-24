@@ -1,0 +1,32 @@
+<DevOps version="0.0.0" type="project">
+ <project version="dev" name="psrdada"/>
+ <sources>
+  <source url="git://git.code.sf.net/p/psrdada/code" type="git"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <task name="setup">
+    <environment dependency="fftw3">
+    FFTW3_CONFIG_FLAGS=--with-fftw3-dir="${fftw3::install_dir}"
+    </environment>
+    <code type="bash">
+    ${src_dir}/bootstrap && ${src_dir}/configure ${FFTW3_CONFIG_FLAGS} --prefix=${install_dir}
+    </code>
+   </task>
+   <task name="build">
+    <code type="bash">
+    make
+    </code>
+   </task>
+   <task name="install">
+    <code type="bash">
+    make install
+    </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies>
+  <dependency version="dev" name="fftw3"/>
+ </dependencies>
+ <EnvironmentManager/>
+</DevOps>
