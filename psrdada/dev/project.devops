@@ -20,7 +20,7 @@
    </task>
    <task name="install">
     <code type="bash">
-    make install
+    make -C ${src_dir} install
     </code>
    </task>
   </workflow>
