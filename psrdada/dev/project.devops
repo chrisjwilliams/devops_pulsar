@@ -10,7 +10,7 @@
     FFTW3_CONFIG_FLAGS=--with-fftw3-dir="${fftw3::install_dir}"
     </environment>
     <code type="bash">
-    ${src_dir}/bootstrap && ${src_dir}/configure ${FFTW3_CONFIG_FLAGS} --prefix=${install_dir}
+    cd ${src_dir} && ./bootstrap && ./configure ${FFTW3_CONFIG_FLAGS} --prefix=${install_dir}
     </code>
    </task>
    <task name="build">
