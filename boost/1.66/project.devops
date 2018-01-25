@@ -1,0 +1,29 @@
+<DevOps version="0.0.0" type="project">
+ <project version="1.66" name="boost"/>
+ <sources>
+  <source url="http://downloads.sourceforge.net/project/boost/boost/1.66.0/boost_1_66_0.tar.bz2?use_mirror=autoselect" type="tar"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <environment>
+   boost_dir=${src_dir}/boost_1_66_0
+   </environment>
+   <task name="setup">
+    <code type="bash">
+    cd ${src_dir}/boost_1_66_0 && ./bootstrap.sh --prefix=${install_dir}
+    </code>
+   </task>
+   <task name="build">
+    <code type="bash">
+    cd ${src_dir}/boost_1_66_0 && ./b2
+    </code>
+   </task>
+   <task name="install">
+    <code type="bash">
+    cd ${src_dir}/boost_1_66_0 && ./b2 install
+    </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies/>
+</DevOps>
