@@ -13,13 +13,13 @@
     PANDA_FLAGS="-DPANDA_INSTALL_DIR=${panda::install_dir}"
     </environment>
     <environment dependency="cheetah">
-    PANDA_FLAGS="-DCHEETAH_INSTALL_DIR=${cheetah::install_dir}"
+    CHEETAH_FLAGS="-DCHEETAH_INSTALL_DIR=${cheetah::install_dir}"
     </environment>
     <environment type="debug">
     FLAGS="-DCMAKE_BUILD_TYPE=debug"
     </environment>
     <code type="bash">
-    cmake ${FLAGS} ${BOOST_FLAGS} ${PANDA_FLAGS} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}"
+    cmake ${FLAGS} ${BOOST_FLAGS} ${PANDA_FLAGS} ${CHEETAH_FLAGS} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}"
     </code>
    </task>
    <task name="build">
