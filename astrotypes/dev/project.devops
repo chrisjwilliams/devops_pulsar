@@ -1,0 +1,33 @@
+<DevOps version="0.0.0" type="project">
+ <project version="dev" name="astrotypes"/>
+ <sources>
+  <source url="https://github.com/PulsarSearchSoft/astrotypes.git" type="git"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <task name="setup">
+    <environment type="debug">
+    FLAGS="-DCMAKE_BUILD_TYPE=debug"
+    </environment>
+    <code type="bash">
+    cmake ${FLAGS} ${BOOST_FLAGS} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}"
+    </code>
+   </task>
+   <task name="build">
+    <code type="bash">
+    make
+    </code>
+   </task>
+   <task name="install">
+    <code type="bash">
+    make install
+    </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies>
+ </dependencies>
+ <EnvironmentManager>
+  <environment name="export"/>
+ </EnvironmentManager>
+</DevOps>
