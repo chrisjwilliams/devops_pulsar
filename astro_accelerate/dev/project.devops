@@ -6,9 +6,6 @@
  <workflows>
   <workflow name="build">
    <task name="setup">
-    <environment dependency="boost">
-    BOOST_FLAGS=-DBOOST_ROOT=${boost::install_dir}
-    </environment>
     <environment arch="darwin">
     FLAGS="-Wno-dev -DGTEST_USE_OWN_TR1_TUPLE=1"
     </environment>
@@ -16,7 +13,7 @@
     FLAGS="-DCMAKE_BUILD_TYPE=debug"
     </environment>
     <code type="bash">
-    cmake ${FLAGS} ${BOOST_FLAGS} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}"
+    cmake ${FLAGS} -DCMAKE_INSTALL_PREFIX="${install_dir}" "${src_dir}"
     </code>
    </task>
    <task name="build">
@@ -32,7 +29,6 @@
   </workflow>
  </workflows>
  <dependencies>
-  <dependency name="boost" version="1.57"/>
  </dependencies>
  <EnvironmentManager>
   <environment name="export"/>
