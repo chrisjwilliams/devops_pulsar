@@ -6,6 +6,9 @@
  <workflows>
   <workflow name="build">
    <task name="setup">
+    <environment dependency="boost">
+    BOOST_FLAGS=-DBOOST_ROOT=${boost::install_dir}
+    </environment>
     <environment type="debug">
     FLAGS="-DCMAKE_BUILD_TYPE=debug"
     </environment>
@@ -26,6 +29,7 @@
   </workflow>
  </workflows>
  <dependencies>
+  <dependency version="1.65" name="boost"/>
  </dependencies>
  <EnvironmentManager>
   <environment name="export"/>
