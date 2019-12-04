@@ -1,0 +1,20 @@
+<DevOps type="project" version="0.0.0">
+ <project version="dev" name="pycparser"/>
+ <sources>
+  <source url="https://github.com/eliben/pycparser.git" type="git"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <task name="setup">
+    <code type="bash">
+    cd ${src_dir} && /usr/bin/python setup.py install --prefix=${install_dir}
+    </code>
+  </workflow>
+ </workflows>
+ <dependencies/>
+ <EnvironmentManager>
+    <environment name="runtime">
+        PYTHONPATH="${install_dir}:${PYTHONPATH}"/>
+    </environment>
+ <EnvironmentManager/>
+</DevOps>
