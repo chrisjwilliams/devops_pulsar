@@ -1,0 +1,25 @@
+<DevOps type="project" version="0.0.0">
+ <project version="dev" name="jinja2"/>
+ <sources>
+  <source url="https://github.com/pallets/jinja.git" type="git"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <task name="setup">
+    <code type="bash">
+        python_version=`python -c 'import sys; print("python" + str(sys.version_info[0])+"."+str(sys.version_info[1]))'`
+        pyhton_lib_dir=${install_dir}/lib/${python_version}/site-packages
+        echo "Creating directory ${python_lib_dir}"
+        mkdir -p ${python_lib_dir} 
+        cd ${src_dir} && PYTHONPATH=${python_lib_dir} python setup.py install --prefix=${install_dir}
+    </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies/>
+ <EnvironmentManager>
+    <environment name="runtime">
+        PYTHONPATH="${install_dir}/lib/python2.7/site-packages:${PYTHONPATH}"
+    </environment>
+ </EnvironmentManager>
+</DevOps>

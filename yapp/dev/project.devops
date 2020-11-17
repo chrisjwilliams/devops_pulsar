@@ -1,0 +1,39 @@
+<DevOps version="0.0.0" type="project">
+ <project version="dev" name="yapp"/>
+ <sources>
+  <source "https://github.com/jayanthc/yapp.git" type="git"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <task name="setup">
+    <environment dependency="cfitsio">
+        CFITSIO_CONFIG_FLAGS=--with-cfitsio-dir="${cfitsio::install_dir}"
+    </environment>
+    <environment dependency="fftw3">
+        FFTW3_CONFIG_FLAGS=--with-fftw3-dir="${fftw3::install_dir}"
+    </environment>
+    <environment dependency="pgplot">
+        PGPLOT_CONFIG_FLAGS=--with-pgploy-dir="${pgplot::install_dir}"
+    </environment>
+    <code type="bash">
+        ${src_dir}/configure ${FFTW3_CONFIG_FLAGS} ${CFITSIO_CONFIG_FLAGS} ${PGPLOT_CONFIG_FLAGS} --prefix=${install_dir}
+    </code>
+   </task>
+   <task name="build">
+    <code type="bash">
+    make -j
+    </code>
+   </task>
+   <task name="install">
+    <code type="bash">
+    make install
+    </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies>
+  <dependency version="dev" name="pgplot"/>
+  <dependency version="dev" name="fftw3"/>
+  <dependency version="3.370" name="cfitsio"/>
+ </dependencies>
+</DevOps>

@@ -1,0 +1,46 @@
+<DevOps version="0.0.0" type="project">
+ <project version="dev" name="spead2"/>
+ <sources>
+  <source url="https://github.com/ska-sa/spead2.git" type="git"/>
+ </sources>
+ <workflows>
+  <workflow name="build">
+   <environment>
+    spead2_src_dir=${src_dir}
+   </environment>
+   <task name="bootstrap">
+    <code type="bash">
+    cd ${spead2_src_dir} && ./bootstrap.sh
+    </code>
+   </task>
+   <task name="setup">
+    <environment dependency="boost">
+        BOOST_FLAGS=LDFLAGS=-L${boost::install_dir}/lib CXXFLAGS="-I${boost::install_dir}/include"
+    </environment>
+    <code type="bash">
+        sys_python=`which python`
+        alias python="PYTHONPATH=$${PYTHONPATH} ${sys_python}"
+        ${BOOST_FLAGS} ${spead2_src_dir}/configure --prefix=${install_dir}
+    </code>
+   </task>
+   <task name="build">
+    <code type="bash">
+    make 
+    </code>
+   </task>
+   <task name="install">
+    <code type="bash">
+    make install
+    </code>
+   </task>
+  </workflow>
+ </workflows>
+ <dependencies>
+  <dependency version="1.65" name="boost"/>
+  <dependency version="dev" name="pycparser"/>
+  <dependency version="dev" name="jinja2"/>
+ </dependencies>
+ <EnvironmentManager>
+  <environment name="export"/>
+ </EnvironmentManager>
+</DevOps>

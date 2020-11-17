@@ -14,7 +14,7 @@
  <dependencies/>
  <EnvironmentManager>
     <environment name="runtime">
-        PYTHONPATH="${install_dir}:${PYTHONPATH}"/>
+        PYTHONPATH="${install_dir}:${PYTHONPATH}"
     </environment>
- <EnvironmentManager/>
+ </EnvironmentManager>
 </DevOps>
